@@ -18,8 +18,23 @@ public class Artikal {
 	private String barkod;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_kategorije")
-	
 	private Kategorije kategorije;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_stavke")
+	private Stavke stavke;
+	
+	public Kategorije getKategorije() {
+		return kategorije;
+	}
+	public void setKategorije(Kategorije kategorije) {
+		this.kategorije = kategorije;
+	}
+	public Stavke getStavke() {
+		return stavke;
+	}
+	public void setStavke(Stavke stavke) {
+		this.stavke = stavke;
+	}
 	public int getId() {
 		return id;
 	}

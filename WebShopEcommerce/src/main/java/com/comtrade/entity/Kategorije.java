@@ -17,7 +17,7 @@ public class Kategorije {
 	private int id;
 	private String naziv;
 	@OneToMany(mappedBy = "kategorije", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Artikal>setArtikala=new HashSet<Artikal>();
+	private Set<Artikal>setArtikala=new HashSet();
 	public int getId() {
 		return id;
 	}
