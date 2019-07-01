@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,21 +21,25 @@ public class Stavke {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int kolicina;
-	private int status;
-	@OneToMany(mappedBy = "stavke", cascade = CascadeType.ALL,orphanRemoval = true)
-	private Set<Artikal> setArtikala= new HashSet<>();
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_porudzbine")
+	@JoinColumn(name = "id_porudzbine")
 	private Porudzbine porudzbine;
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Artikla")
+	private Artikal artikal;
 	
 	public Porudzbine getPorudzbine() {
 		return porudzbine;
 	}
 	public void setPorudzbine(Porudzbine porudzbine) {
 		this.porudzbine = porudzbine;
+	}
+	public Artikal getArtikal() {
+		return artikal;
+	}
+	public void setArtikal(Artikal artikal) {
+		this.artikal = artikal;
 	}
 	public Long getId() {
 		return id;
@@ -47,28 +53,15 @@ public class Stavke {
 	public void setKolicina(int kolicina) {
 		this.kolicina = kolicina;
 	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public Set<Artikal> getSetArtikala() {
-		return setArtikala;
-	}
-	public void setSetArtikala(Set<Artikal> setArtikala) {
-		this.setArtikala = setArtikala;
-	}
 	
-	public void addArtikal(Artikal artikal) {
-		setArtikala.add(artikal);
-		artikal.setStavke(this);
-	}
 	
-	public void removeArtikal(Artikal artikal) {
-		setArtikala.remove(artikal);
-		artikal.setStavke(null);
-	}
+	/*
+	 * public void addArtikal(Artikal artikal) { setArtikala.add(artikal);
+	 * artikal.setStavke(this); }
+	 * 
+	 * public void removeArtikal(Artikal artikal) { setArtikala.remove(artikal);
+	 * artikal.setStavke(null); }
+	 */
 	
 	
 }

@@ -1,5 +1,8 @@
 package com.comtrade.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Artikal {
@@ -16,12 +20,12 @@ public class Artikal {
 	private String naziv;
 	private int cena;
 	private String barkod;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_kategorije")
 	private Kategorije kategorije;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_stavke")
-	private Stavke stavke;
+	
+	
 	
 	public Kategorije getKategorije() {
 		return kategorije;
@@ -29,12 +33,7 @@ public class Artikal {
 	public void setKategorije(Kategorije kategorije) {
 		this.kategorije = kategorije;
 	}
-	public Stavke getStavke() {
-		return stavke;
-	}
-	public void setStavke(Stavke stavke) {
-		this.stavke = stavke;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -60,6 +59,7 @@ public class Artikal {
 		this.barkod = barkod;
 	}
 	
+	  
 	
 	
 }

@@ -52,5 +52,38 @@
 
 
 	</fieldset>
+	
+	
+	<fieldset>
+		<legend>Kreiraj Artikal</legend>
+
+		<table>
+		
+	<form:form action="/artikal/kreiraj" modelAttribute="artikal"
+			method="post">
+
+			<tr>
+			<td>Naziv <form:input path="naziv" /></td>
+			<br>
+			<td>BarKod <form:input path="barkod" /></td>
+			<br>
+			<select name="listaKategorija">
+			<%for(Kategorije temp:listaKategorija) {%>
+			<option value="<%=temp.getId()%>"><%=temp.getNaziv() %></option>		
+			<%}%>
+			</select>
+			
+			<td><input type="submit" value="Kreiraj artikal"></td>
+			<br>
+
+			</tr>
+
+
+
+		</form:form>
+
+</table>
+
+	</fieldset>
 </body>
 </html>
