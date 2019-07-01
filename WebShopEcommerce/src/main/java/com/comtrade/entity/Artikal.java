@@ -18,7 +18,7 @@ public class Artikal {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String naziv;
-	private int cena;
+	private Double cena;
 	private String barkod;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -46,10 +46,11 @@ public class Artikal {
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
-	public int getCena() {
+	
+	public Double getCena() {
 		return cena;
 	}
-	public void setCena(int cena) {
+	public void setCena(Double cena) {
 		this.cena = cena;
 	}
 	public String getBarkod() {

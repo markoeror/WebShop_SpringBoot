@@ -65,9 +65,11 @@
 			<tr>
 			<td>Naziv <form:input path="naziv" /></td>
 			<br>
+			<td>Cena <form:input path="cena" /></td>
+			<br>
 			<td>BarKod <form:input path="barkod" /></td>
 			<br>
-			<select name="listaKategorija">
+			<select name="tipKategorije">
 			<%for(Kategorije temp:listaKategorija) {%>
 			<option value="<%=temp.getId()%>"><%=temp.getNaziv() %></option>		
 			<%}%>
