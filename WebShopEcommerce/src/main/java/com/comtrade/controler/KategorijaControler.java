@@ -22,8 +22,9 @@ public class KategorijaControler {
 	
 	@PostMapping("/kategorija/kreiraj")
 	public String kreirajKategoriju(@ModelAttribute("kategorija")Kategorije kategorije, Model model) {
+		
 		kategorijaService.save(kategorije);
-		return null;
+		return "redirect:/admin";
 		
 	}
 }

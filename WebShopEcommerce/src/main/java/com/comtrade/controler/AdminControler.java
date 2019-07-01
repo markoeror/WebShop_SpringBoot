@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.comtrade.entity.Kategorije;
 import com.comtrade.service.AdminService;
 import com.comtrade.service.KategorijaService;
 
@@ -22,8 +25,12 @@ public class AdminControler {
 
 	@GetMapping("/admin")
 	public String prikaziAdminFormu(Model model) {
-		model.addAttribute("listKategorija",kategorijaService.getKategorijeList());
+		Kategorije kategorija = new Kategorije();
+		model.addAttribute("kategorija", kategorija);
+		model.addAttribute("listaKategorija",kategorijaService.getKategorijeList());
 		return "admin";
 		
 	}
+	
+	
 }

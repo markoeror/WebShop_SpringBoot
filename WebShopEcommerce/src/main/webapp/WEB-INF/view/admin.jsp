@@ -36,30 +36,14 @@
 		<legend>Lista Kategorija</legend>
 
 		<table>
-			<tr>
-				<th>Naziv</th>
-
-			</tr>
 		
-
-				<%
-					List<Kategorije> list = (List<Kategorije>) request.getAttribute("listKategorija");
-				%>
-
-				<select name="tipKategorije">
-					<%
-						for (Kategorije temp : list) {
-					%>
-					<option value="<%=temp.getId()%>"><%=temp.getNaziv()%></option>
-					<%
-						}
-					%>
-				</select>
-
+		<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
+		<select name="listaKategorija">
+		<%for(Kategorije temp:listaKategorija) {%>
+		<option value="<%=temp.getId()%>"><%=temp.getNaziv() %></option>
 		
-
-
-
+		<%}%>
+		</select>
 		</table>
 
 
