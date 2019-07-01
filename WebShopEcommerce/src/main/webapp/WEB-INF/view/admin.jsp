@@ -32,43 +32,32 @@
 		</form:form>
 	</fieldset>
 
-	<fieldset>
-		<legend>Lista Kategorija</legend>
+	
+	
+	
 
-		<table>
 		
-		<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
-		<select name="listaKategorija">
-		<%for(Kategorije temp:listaKategorija) {%>
-		<option value="<%=temp.getId()%>"><%=temp.getNaziv() %></option>
-		
-		<%}%>
-		</select>
-		</table>
 
 
 
-
-
-
-	</fieldset>
+	
 	
 	
 	<fieldset>
 		<legend>Kreiraj Artikal</legend>
 
 		<table>
-		
+			<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
 	<form:form action="/artikal/kreiraj" modelAttribute="artikal"
 			method="post">
 
 			<tr>
 			<td>Naziv <form:input path="naziv" /></td>
-			<br>
+
 			<td>Cena <form:input path="cena" /></td>
-			<br>
+		
 			<td>BarKod <form:input path="barkod" /></td>
-			<br>
+		
 			<select name="tipKategorije">
 			<%for(Kategorije temp:listaKategorija) {%>
 			<option value="<%=temp.getId()%>"><%=temp.getNaziv() %></option>		
@@ -76,12 +65,13 @@
 			</select>
 			
 			<td><input type="submit" value="Kreiraj artikal"></td>
-			<br>
 
 			</tr>
 
-
-
+	<%-- 	<form:select path="kategorija" onclick="kategorija/" >
+   	 	<form:options items="${listaKategorija}"  itemLabel="naziv" itemValue="id" />
+		</form:select>
+ --%>
 		</form:form>
 
 </table>
