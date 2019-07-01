@@ -1,4 +1,4 @@
-package com.comtrade.entiry;
+package com.comtrade.entity;
 
 import java.util.Date;
 
