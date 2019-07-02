@@ -1,5 +1,7 @@
 package com.comtrade.controler;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,21 @@ public class KategorijaControler {
 	
 	@PostMapping("/kategorija/kreiraj")
 	public String kreirajKategoriju(@ModelAttribute("kategorija")Kategorije kategorije, Model model) {
-		
+		String name= kategorije.getNaziv();
+		String uploadFile = "C:\\Users\\Marko Eror\\eclipse-workspace\\webshop_satovi\\WebShopEcommerce\\src\\main\\resources\\static\\images\\" + name+ "\\";
+		File f = new File(uploadFile);
+		if (!f.exists()) {
+			f.mkdir();
+		}
 		kategorijaService.save(kategorije);
-		return "redirect:/admin";
-		
-	}
+		return "redirect:/admin";		
+		}
+	
+	@PostMapping("/kategorija/{temp.id}")
+		public String listaArtikalaKategorije(@ModelAttribute("kategorija1")int id) {
+			Kategorije k= new Kategorije();
+			k.setId(id);
+			return null;			
+		}
+	
 }

@@ -20,7 +20,13 @@ public class Artikal {
 	private String naziv;
 	private Double cena;
 	private String barkod;
-	
+	private String fileName;
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_kategorije")
 	private Kategorije kategorije;

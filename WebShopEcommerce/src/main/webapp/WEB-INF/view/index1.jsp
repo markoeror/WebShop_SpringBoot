@@ -219,7 +219,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/mojjs.js"></script>
-
+  <script type="text/javascript">
+  
+function findIdCombo() {
+		var id = document.getElementById("categoryComboBox");
+		var idCategory = id.options[id.selectedIndex].value;
+		document.getElementById("id").value = idCategory;
+		console.log(idCategory);}	
+function findIdCombo() {
+	var id = document.getElementById("categoryComobox");
+	var idCategory = id.options[id.selectedIndex].value;
+	document.getElementById("idCategory").value += idCategory;
+	console.log(idCategory);
+	/* alert(idCategory); */
+	
+}
+function findIdComboP() {
+	var id = document.getElementById("productComboBox");
+	var idProduct = id.options[id.selectedIndex].value;
+	document.getElementById("idProd").value = idProduct;
+	console.log(idProduct);
+	/*  alert(idProduct);  */
+	
+}
+</script>
 </body>
 
 </html>
