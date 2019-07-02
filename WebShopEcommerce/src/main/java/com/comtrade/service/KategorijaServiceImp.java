@@ -26,6 +26,7 @@ public class KategorijaServiceImp implements KategorijaService {
 	}
 
 	@Override
+	@Transactional
 	public java.util.List<Kategorije> getKategorijeList() {
 		
 		return kategorijaRepository.findAll();

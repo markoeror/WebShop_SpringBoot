@@ -54,10 +54,6 @@ public class ArtikalControler {
 		int a=fileName.lastIndexOf("\\");
 		fileName=fileName.substring(a+1);		
 		String uploadFile="C:\\Users\\Marko Eror\\eclipse-workspace\\webshop_satovi\\WebShopEcommerce\\src\\main\\resources\\static\\images\\"+nameKat+"\\";
-		 
-	/*	String uploadFile="\\"+nameCat+"\\";
-		String uploadFile1="/WebContent/images/"+nameCat+"/";*/
-		
 		File f= new File(uploadFile);
 		if(!f.exists()) {
 			f.mkdir();
@@ -68,9 +64,17 @@ public class ArtikalControler {
 		System.out.println("snimljena slika "+ fileName);
 		artikal.setFileName(fileName);
 		artikalService.save(artikal);
+		return "redirect:/admin";		
+	}
+	
+	@PostMapping("/artikal/dodaj")
+	public String dodajArtikal(@ModelAttribute("artikalDodaj")Artikal artikal,@RequestParam("artikalId")int artikalId) {
+		int kolicina= artikal.getKolicina();
+		Artikal artikal1=artikalService.getArtikal(artikalId);
+		kolicina+=artikal1.getKolicina();
+		artikal1.setKolicina(kolicina);
+		artikalService.save(artikal1);
 		return "redirect:/admin";
-		
-		
 		
 	}
 	

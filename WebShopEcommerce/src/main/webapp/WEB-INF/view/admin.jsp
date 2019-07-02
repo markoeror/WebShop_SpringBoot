@@ -1,3 +1,6 @@
+<%@page import="com.comtrade.service.ArtikalServiceImp"%>
+<%@page import="com.comtrade.service.ArtikalService"%>
+<%@page import="com.comtrade.entity.Artikal"%>
 <%@page import="com.comtrade.entity.Kategorije"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,7 +14,7 @@ pageEncoding="ISO-8859-1"%>
 <title>Insert title here</title>
 </head>
 <body>
-
+		
 	<fieldset>
 		<legend>Kreiraj Kategoriju</legend>
 		
@@ -29,8 +32,7 @@ pageEncoding="ISO-8859-1"%>
 		
 		<table>
 			<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
-	<form:form action="/artikal/kreiraj" modelAttribute="artikal" 
-			method="post" enctype="multipart/form-data">
+			<form:form action="/artikal/kreiraj" modelAttribute="artikal" method="post" enctype="multipart/form-data">
 			<input type="hidden" id="id" name="idKat" value="1" >
 			<tr>
 			<td><select name="tipKategorije"  id="categoryComboBox" onchange="findIdCombo()" >
@@ -49,14 +51,37 @@ pageEncoding="ISO-8859-1"%>
    	 	<form:options items="${listaKategorija}"  itemLabel="naziv" itemValue="id" />
 		</form:select>
  --%>
-	</form:form>
-		
-		
-			
+	</form:form>			
 </table>
-
 	</fieldset>
 	
+
+		<fieldset>
+		<legend> Add Product</legend>
+		
+		<%List<Artikal> listaArtikala= (List<Artikal>) request.getAttribute("listaArtikala"); %>
+		<form:form action="/artikal/dodaj" modelAttribute="artikalDodaj" method="post" >
+		<input type="hidden" id="idProd" name="idProd" value="1" >
+		<select name="artikalId" id="productComboBox" onchange="findIdComboP() ">	
+		<%	for (Artikal a : listaArtikala) {	%>	
+		<option value="<%=a.getId()%>" ><%=a.getNaziv()%>		
+		</option>
+		<%}%>
+		</select>	
+		<br>	
+		<!-- <input type="text" name="kolicinaA" placeholder="unesite kolicinu"> -->
+		
+		<td>Kolicina<form:input path="kolicina" /></td>
+		<input type="submit" value="Unesi">
+		</form:form>
+		</fieldset>
+
+
+
+
+
+
+
 
 	
 	<script type="text/javascript">
@@ -65,6 +90,14 @@ pageEncoding="ISO-8859-1"%>
 		var idCategory = id.options[id.selectedIndex].value;
 		document.getElementById("id").value = idCategory;
 		console.log(idCategory);}	
+	function findIdComboP() {
+		var id = document.getElementById("productComboBox");
+		var idProduct = id.options[id.selectedIndex].value;
+		document.getElementById("idProd").value = idProduct;
+		console.log(idProduct);
+		/*  alert(idProduct);  */
+		
+	}
 	</script>
 	
 </body>

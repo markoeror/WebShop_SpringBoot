@@ -21,6 +21,16 @@ public class Artikal {
 	private Double cena;
 	private String barkod;
 	private String fileName;
+	private Integer kolicina;
+	
+	
+	
+	public Integer getKolicina() {
+		return kolicina;
+	}
+	public void setKolicina(Integer kolicina) {
+		this.kolicina = kolicina;
+	}
 	public String getFileName() {
 		return fileName;
 	}
