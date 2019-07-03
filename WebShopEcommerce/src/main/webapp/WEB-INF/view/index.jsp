@@ -9,6 +9,6 @@
 <body>Admin forma ==>
 
 	<input type="button" value="Admin"  onclick="window.location.href='admin'" class="add-button">
-
+	<input type="button" value="Index"  onclick="window.location.href='index1'" class="add-button">
 </body>
 </html>

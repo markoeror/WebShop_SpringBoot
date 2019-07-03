@@ -42,4 +42,5 @@ public class KategorijaControler {
 			return null;			
 		}
 	
+	
 }

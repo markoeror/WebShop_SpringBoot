@@ -1,6 +1,10 @@
 
+<%@page import="com.comtrade.entity.Kategorije"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!DOCTYPE html>
 <html lang="en">
@@ -25,6 +29,7 @@
 </head>
 
 <body onload="citati()">
+<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
   <!-- POČETAK OMOTAČA -->
   <div class="container">
 
@@ -64,11 +69,13 @@
               <a href="#s" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">BRENDOVI <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="haemmer.html">HAEMMER</a></li>
-
-                <li><a href="welder.html">WELDER</a></li>
-
-                <li><a href="uboat.html">U-BOAT</a></li>
+               <%
+              if(listaKategorija!=null){
+              for(Kategorije k: listaKategorija){ %>
+              <li><a href="${pageContext.request.contextPath}/index/kategorijaArtikli/<%=k.getId()%>"><%=k.getNaziv() %></a></li>
+              <%}} %>
+              
+        
               </ul>
             </li>
             <!-- KRAJ PADAJUĆEG MENIJA -->

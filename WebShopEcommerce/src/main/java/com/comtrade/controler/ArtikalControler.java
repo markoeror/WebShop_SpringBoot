@@ -41,8 +41,7 @@ public class ArtikalControler {
 		tipKategorije.setId(idKategorije);
 		artikal.setKategorije(tipKategorije);
 		artikal.setKolicina(0);
-		String nameKat="";
-		
+		String nameKat="";		
 		List<Kategorije> listC= kategorijaService.getKategorijeList();
 		for(Kategorije c:listC) {
 			if(c.getId()==(idKategorije)) {
