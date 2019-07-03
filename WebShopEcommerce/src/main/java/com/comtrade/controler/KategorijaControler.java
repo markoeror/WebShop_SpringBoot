@@ -25,7 +25,7 @@ public class KategorijaControler {
 	@PostMapping("/kategorija/kreiraj")
 	public String kreirajKategoriju(@ModelAttribute("kategorija")Kategorije kategorije, Model model) {
 		String name= kategorije.getNaziv();
-		String uploadFile = "C:\\Users\\Marko Eror\\eclipse-workspace\\webshop_satovi\\WebShopEcommerce\\src\\main\\resources\\static\\images\\" + name+ "\\";
+		String uploadFile = "C:\\Users\\Java Advanced\\Pictures\\ecomerce\\WebShopEcommerce\\src\\main\\resources\\static\\images\\" + name+ "\\";
 		File f = new File(uploadFile);
 		if (!f.exists()) {
 			f.mkdir();
