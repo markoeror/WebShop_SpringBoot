@@ -40,6 +40,7 @@ public class ArtikalControler {
 		Kategorije tipKategorije= new Kategorije();
 		tipKategorije.setId(idKategorije);
 		artikal.setKategorije(tipKategorije);
+		artikal.setKolicina(0);
 		String nameKat="";
 		
 		List<Kategorije> listC= kategorijaService.getKategorijeList();
@@ -71,7 +72,7 @@ public class ArtikalControler {
 	public String dodajArtikal(@ModelAttribute("artikalDodaj")Artikal artikal,@RequestParam("artikalId")int artikalId) {
 		int kolicina= artikal.getKolicina();
 		Artikal artikal1=artikalService.getArtikal(artikalId);
-		
+	
 		kolicina+=artikal1.getKolicina();
 		artikal1.setKolicina(kolicina);
 		artikalService.save(artikal1);

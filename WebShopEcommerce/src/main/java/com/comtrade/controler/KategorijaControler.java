@@ -26,6 +26,7 @@ public class KategorijaControler {
 	public String kreirajKategoriju(@ModelAttribute("kategorija")Kategorije kategorije, Model model) {
 		String name= kategorije.getNaziv();
 		String uploadFile = "C:\\Users\\Java Advanced\\Pictures\\ecomerce\\WebShopEcommerce\\src\\main\\resources\\static\\images\\" + name+ "\\";
+	//	String uploadFile = "..\\WebShopEcommerce\\src\\main\\resources\\static\\images\\" + name+ "\\";
 		File f = new File(uploadFile);
 		if (!f.exists()) {
 			f.mkdir();
