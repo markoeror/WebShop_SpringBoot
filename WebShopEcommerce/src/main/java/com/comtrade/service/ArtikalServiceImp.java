@@ -43,4 +43,11 @@ public class ArtikalServiceImp implements ArtikalService {
 		return artikalRepository.findArtikalById(artikalId);
 	}
 
+	@Override
+	@Transactional
+	public List<Artikal> listaArtiklaZaKat(int id) {
+		// TODO Auto-generated method stub
+		return artikalRepository.listaArtikalaZaKat(id);
+	}
+
 }

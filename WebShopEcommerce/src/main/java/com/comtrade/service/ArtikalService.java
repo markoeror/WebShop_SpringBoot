@@ -9,4 +9,5 @@ public interface ArtikalService {
 	void save(Artikal artikal);
 	List<Artikal> listaArtikla();
 	Artikal getArtikal(int artikalId);
+	List<Artikal> listaArtiklaZaKat(int id);
 }

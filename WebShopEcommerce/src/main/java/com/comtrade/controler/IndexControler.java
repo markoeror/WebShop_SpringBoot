@@ -1,5 +1,7 @@
 package com.comtrade.controler;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +51,8 @@ public class IndexControler {
 	@GetMapping("/index/kategorijaArtikli/{id}")
 	public String prikazKategorijeArtikli(@PathVariable("id")int id) {
 			System.out.println(id);
+			List<Artikal> listaArtikala= artikalService.listaArtiklaZaKat(id);
+			
 		
 		return "redirect:/index1";
 		
