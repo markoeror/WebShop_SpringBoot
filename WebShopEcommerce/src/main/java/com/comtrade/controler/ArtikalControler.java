@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.comtrade.entity.Artikal;
@@ -30,7 +31,8 @@ public class ArtikalControler {
 		this.artikalService = artikalService;
 		this.kategorijaService = kategorijaService;
 	}
-	
+
+	/* KREIRANJE ARTIKLA */
 	@PostMapping("/artikal/kreiraj")
 	public String kreirajArtikal(@ModelAttribute("artikal")Artikal artikal,
 	@RequestParam("idKat")int idKat,
@@ -66,7 +68,8 @@ public class ArtikalControler {
 		artikalService.save(artikal);
 		return "redirect:/admin";		
 	}
-	
+
+	/* DODAVANJE ARTIKLA */
 	@PostMapping("/artikal/dodaj")
 	public String dodajArtikal(@ModelAttribute("artikalDodaj")Artikal artikal,@RequestParam("artikalId")int artikalId) {
 		int kolicina= artikal.getKolicina();
@@ -77,6 +80,17 @@ public class ArtikalControler {
 		return "redirect:/admin";
 		
 	}
+	@PostMapping("/artikal/listaArtikalaZaK")
+	public String listaArtikalaZaKategoriju(@ModelAttribute("kategorijaArtikala")Kategorije k) {
+		/*
+		 * Kategorije k= new Kategorije(); k.setId(kategorijaId);
+		 */
+		List<Artikal> listaArtikalaZaK= artikalService.listaArtikalaZaK(k);
+		
+		return "redirect:/admin";
+		
+	}
+	
 	
 	/* Metoda za vracanje naziva slike iz putanje slike koju ubacujemo za artikal u JAVI */
 	private String GetFile(Part part) {

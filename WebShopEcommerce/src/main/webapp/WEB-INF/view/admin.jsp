@@ -62,16 +62,18 @@ pageEncoding="ISO-8859-1"%>
 		<%List<Artikal> listaArtikala= (List<Artikal>) request.getAttribute("listaArtikala"); %>
 		<form:form action="/artikal/dodaj" modelAttribute="artikalDodaj" method="post" >
 		<input type="hidden" id="idProd" name="idProd" value="1" >
-		<select name="artikalId" id="productComboBox" onchange="findIdComboP() ">	
+		Izaberite artikal:  <select name="artikalId" id="productComboBox" onchange="findIdComboP() ">	
 		<%	for (Artikal a : listaArtikala) {	%>	
 		<option value="<%=a.getId()%>" ><%=a.getNaziv()%>		
 		</option>
+		
 		<%}%>
 		</select>	
+		
 		<br>	
 		<!-- <input type="text" name="kolicinaA" placeholder="unesite kolicinu"> -->
 		
-		<td>Kolicina<form:input path="kolicina" /></td>
+		<td>Kolicina  <form:input path="kolicina" /></td>
 		<input type="submit" value="Unesi">
 		</form:form>
 		</fieldset>
@@ -79,7 +81,20 @@ pageEncoding="ISO-8859-1"%>
 
 
 
+		<%-- <form:form action="/artikal/listaArtikalaZaK" modelAttribute="kategorijaArtikala" method="post" >
+		Izaberite kategoriju: 	
+		<%	for (Kategorije k : listaKategorija) {	%>	
+		<form:hidden path="id" />
+		<form:button name="<%=k.getNaziv() %>" value="<%=k.getNaziv() %>"><%=k.getNaziv() %></form:button>
+		
+		
+		
+		
+		<%}%>
+		
+		</form:form> --%>
 
+		
 
 
 

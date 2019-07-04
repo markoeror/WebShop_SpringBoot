@@ -29,19 +29,21 @@ public class AdminControler {
 	}
 
 
-
+	/* PRIKAZIVANJE ADMIN FORME */
 	@GetMapping("/admin")
 	public String prikaziAdminFormu(Model model) {
 		Kategorije kategorija = new Kategorije();
+		Kategorije kategorijaArtikala= new Kategorije();
 		Artikal artikal= new Artikal();
 		Artikal artikalDodaj= new Artikal();
+		
 		model.addAttribute("kategorija", kategorija);
 		model.addAttribute("artikal",artikal);
 		model.addAttribute("artikalDodaj",artikalDodaj);
 		model.addAttribute("listaKategorija",kategorijaService.getKategorijeList());
 		model.addAttribute("listaArtikala",artikalService.listaArtikla());
-		return "admin";
-		
+		model.addAttribute("kategorijaArtikala",kategorijaArtikala);
+		return "admin";		
 	}
 	
 	
