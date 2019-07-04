@@ -1,4 +1,5 @@
 
+<%@page import="com.comtrade.entity.Artikal"%>
 <%@page import="com.comtrade.entity.Kategorije"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -30,6 +31,7 @@
 
 <body onload="citati()">
 <%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
+<%List<Artikal> listaArtikala=(List<Artikal>) request.getAttribute("listaArtikala"); %>
   <!-- POČETAK OMOTAČA -->
   <div class="container">
 
@@ -72,7 +74,7 @@
                <%
               if(listaKategorija!=null){
               for(Kategorije k: listaKategorija){ %>
-              <li><a href="${pageContext.request.contextPath}/index/kategorijaArtikli/<%=k.getId()%>"><%=k.getNaziv() %></a></li>
+              <li><a href="${pageContext.request.contextPath}/webshop/kategorijaArtikli<%=k.getId()%>"><%=k.getNaziv() %></a></li>
               <%}} %>
               
         
@@ -80,7 +82,7 @@
             </li>
             <!-- KRAJ PADAJUĆEG MENIJA -->
 
-            <li><a href="webshop.html">PRODAVNICA</a></li>
+            <li><a href="webshop">PRODAVNICA</a></li>
             <li><a href="onama.html">O NAMA / KONTAKT</a></li>
             <li><a href="kontakt.html">LOGIN</a></li>
 

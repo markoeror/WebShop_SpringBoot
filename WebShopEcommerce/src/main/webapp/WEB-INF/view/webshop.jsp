@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+
+<%@page import="com.comtrade.entity.Kategorije"%>
+<%@page import="com.comtrade.entity.Artikal"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,21 +21,24 @@
   <meta name="robots" content="index">
   <link rel="icon" href="http://primetimewatches.net/media/favicon/default/favicon.ico" type="image/x-icon">
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/all.min.css" rel="stylesheet">
-  <link href="css/mojstil.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}css/all.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}css/mojstil.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}ss/mojstil_index.css" rel="stylesheet">
 
-  <link href="css/mojstil_galerija.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}css/mojstil_galerija.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-  <!-- POČETAK OMOTAČA -->
+<%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
+<%List<Artikal> listaArtikala=(List<Artikal>) request.getAttribute("listaArtikala"); %>
+  <!-- POÄETAK OMOTAÄA -->
   <div class="container">
 
 
-    <!-- POČETAK HEDER-A -->
+    <!-- POÄETAK HEDER-A -->
     <div class="page-header">
       <img src="images/primetime/primetime-head-inv.png">
     </div>
@@ -39,7 +51,7 @@
       <h2>Glavna navigacija</h2>
       <div class="container-fluid">
 
-        <!-- POČETAK DELA KOJI KREIRA BURGER -->
+        <!-- POÄETAK DELA KOJI KREIRA BURGER -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -48,7 +60,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index1">
             PRIME
           </a>
         </div>
@@ -57,23 +69,24 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
 
-            <!-- POČETAK PADAJUĆEG MENIJA -->
+            <!-- POÄETAK PADAJUÄEG MENIJA -->
             <li class="dropdown">
               <a href="galerija.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">BRENDOVI <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="haemmer.html">HAEMMER</a></li>
-
-                <li><a href="welder.html">WELDER</a></li>
-
-                <li><a href="uboat.html">U-BOAT</a></li>
+              
+            <%
+              if(listaKategorija!=null){
+              for(Kategorije k: listaKategorija){ %>
+              <li><a href="${pageContext.request.contextPath}/index/kategorijaArtikli/<%=k.getId()%>"><%=k.getNaziv() %></a></li>
+              <%}} %>
               </ul>
             </li>
-            <!-- KRAJ PADAJUĆEG MENIJA -->
+            <!-- KRAJ PADAJUÄEG MENIJA -->
 
-            <li><a href="webshop.html">PRODAVNICA</a></li>
+            <li><a href="webshop">PRODAVNICA</a></li>
             <li><a href="onama.html">O NAMA</a></li>
-            <li><a href="kontakt.html">KONTAKT</a></li>
+            <li><a href="kontakt">KONTAKT</a></li>
 
         </div>
         <!-- /.navbar-collapse -->
@@ -82,7 +95,7 @@
     </nav>
     <!-- KRAJ NAVIGACIJE -->
 
-    <!-- POČETAK NASLOVA STRANE -->
+    <!-- POÄETAK NASLOVA STRANE -->
     <div class="page-header">
       <h1><em>WEBSHOP</em></h1>
     </div>
@@ -90,7 +103,7 @@
     <form class="prodavnica" id="proizvodi">
       <div class="page-header">
 
-        <!-- POČETAK BOKSEVA -->
+        <!-- POÄETAK BOKSEVA -->
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-0">
 
@@ -103,176 +116,48 @@
 
         <div class="row">
 
-          <!-- BOČNI SEGMENT KOJI SLUŽI SAMO ZA ODVAJANJE -->
+          <!-- BOÄNI SEGMENT KOJI SLUÅ½I SAMO ZA ODVAJANJE -->
           <div class="col-xs-2 col-md-1">
           </div>
 
           <!-- GLAVNI SEGMENT -->
           <div class="col-xs-8 col-md-10">
 
-            <!-- POČETAK DELA SA FOTOGRAFIJAMA PROIZVODA -->
+            <!-- POÄETAK DELA SA FOTOGRAFIJAMA PROIZVODA -->
             <div class="okvir0">
 
               <!-- FOTOGRAFIJA 1 -->
+                <%if(listaArtikala!=null){
+             for(Artikal a: listaArtikala){ 
+			 String  naziv=a.getKategorije().getNaziv();
+%>
               <div class="okvir1">
                 <div>
                   <p>
                     <h3>
-                      <strong>DHC-12 Zeno</strong>
+                      <strong><%=a.getNaziv()%>"</strong>
                     </h3>
                   </p>
                   <a>
-                    <img src="images/haemmer/DHC-12_Zeno.jpg" alt="DHC-12 Zeno">
+                    <img src="\images\<%=naziv%>\<%=a.getFileName() %>" alt="<%=a.getNaziv()%>" width=”30px” height=”30px”>
                   </a>
                 </div>
+                 <input type="hidden" name="idArtikla" value="<%=a.getId()%>">
                 <p>
-                  <strong>40,150.00 RSD</strong>
+                  <strong><%=a.getCena() %> RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="jedan"></label>
-                  <input type="text" id="jedan" name="" size="1" placeholder="0"> komada
+                  Narucujem <label for="<%=a.getId()%>"></label>
+                  <input type="number" id="<%=a.getId()%>" name="<%=a.getId() %>" size="1" placeholder="0"> komada
                 </p>
                 <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                 <input type="submit" value="Dodaj u korpu" onclick="poziv(<%=a.getId()%>,<%=a.getCena()%>)">                 
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 2 -->
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>DHC-13 Moon</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/haemmer/DHC-13_Moon.jpg" alt="DHC-13 Moon">
-                  </a>
-                </div>
-                <p>
-                  <strong>40,150.00 RSD</strong>
-                </p>
-                <p>
-                  Naručujem <label for="dva"></label>
-                  <input type="text" id="dva" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              <!-- FOTOGRAFIJA 3 -->
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>HC-07 Invader</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/haemmer/HC-07_Invader.jpg" alt="HC-07 Invader">
-                  </a>
-                </div>
-                <p>
-                  <strong>42,350.00 RSD</strong>
-                </p>
-                <p>
-                  Naručujem <label for="tri"></label>
-                  <input type="text" id="tri" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              <!-- FOTOGRAFIJA 4 -->
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>HC-16 Charon</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/haemmer/HC-16_Charon.jpg" alt="HC-16 Charon">
-                  </a>
-                </div>
-                <p>
-                  <strong>42,350.00 RSD</strong>
-                </p>
-                <p>
-                  Naručujem <label for="cetiri"></label>
-                  <input type="text" id="cetiri" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              <!-- FOTOGRAFIJA 5 -->
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>HQ-02 Dublin</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/haemmer/HQ-02_Dublin.jpg" alt="HQ-02 Dublin">
-                  </a>
-                </div>
-                <p>
-                  <strong>25,300.00 RSD</strong>
-                </p>
-                <p>
-                  Naručujem <label for="pet"></label>
-                  <input type="text" id="pet" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              <!-- FOTOGRAFIJA 6 -->
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>HQ-10 Brussel</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/haemmer/HQ-10_Brussel.jpg" alt="HQ-10 Brussel">
-                  </a>
-                </div>
-                <p>
-                  <strong>25,300.00 RSD</strong>
-                </p>
-                <p>
-                  Naručujem <label for="sest"></label>
-                  <input type="text" id="sest" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
+          	<%}} %>
               </div>
 
             </div>
@@ -286,7 +171,7 @@
       </div>
       <div class="page-header">
 
-        <!-- POČETAK BOKSEVA -->
+    <!--     POÄETAK BOKSEVA
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-0">
 
@@ -299,17 +184,17 @@
 
         <div class="row">
 
-          <!-- BOČNI SEGMENT KOJI SLUŽI SAMO ZA ODVAJANJE -->
+          BOÄNI SEGMENT KOJI SLUÅ½I SAMO ZA ODVAJANJE
           <div class="col-xs-2 col-md-1">
           </div>
 
-          <!-- GLAVNI SEGMENT -->
+          GLAVNI SEGMENT
           <div class="col-xs-8 col-md-10">
 
-            <!-- POČETAK DELA SA FOTOGRAFIJAMA PROIZVODA -->
+            POÄETAK DELA SA FOTOGRAFIJAMA PROIZVODA
             <div class="okvir0">
 
-              <!-- FOTOGRAFIJA 7 -->
+              FOTOGRAFIJA 7
               <div class="okvir1">
                 <div>
                   <p>
@@ -325,18 +210,18 @@
                   <strong>71,500.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="sedam"></label>
+                  NaruÄujem <label for="sedam"></label>
                   <input type="text" id="sedam" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 8 -->
+              FOTOGRAFIJA 8
               <div class="okvir1">
                 <div>
                   <p>
@@ -352,18 +237,18 @@
                   <strong>71,500.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="osam"></label>
+                  NaruÄujem <label for="osam"></label>
                   <input type="text" id="osam" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 9 -->
+              FOTOGRAFIJA 9
               <div class="okvir1">
                 <div>
                   <p>
@@ -379,18 +264,18 @@
                   <strong>64,900.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="devet"></label>
+                  NaruÄujem <label for="devet"></label>
                   <input type="text" id="devet" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 10 -->
+              FOTOGRAFIJA 10
               <div class="okvir1">
                 <div>
                   <p>
@@ -406,18 +291,18 @@
                   <strong>70,400.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="deset"></label>
+                  NaruÄujem <label for="deset"></label>
                   <input type="text" id="deset" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 11 -->
+              FOTOGRAFIJA 11
               <div class="okvir1">
                 <div>
                   <p>
@@ -433,18 +318,18 @@
                   <strong>70,400.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="jedanaest"></label>
+                  NaruÄujem <label for="jedanaest"></label>
                   <input type="text" id="jedanaest" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
-              <!-- FOTOGRAFIJA 12 -->
+              FOTOGRAFIJA 12
               <div class="okvir1">
                 <div>
                   <p>
@@ -460,30 +345,30 @@
                   <strong>70,400.00 RSD</strong>
                 </p>
                 <p>
-                  Naručujem <label for="dvanaest"></label>
+                  NaruÄujem <label for="dvanaest"></label>
                   <input type="text" id="dvanaest" name="" size="1" placeholder="0"> komada
                 </p>
                 <p>
                   <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    Završi kupovinu
+                    ZavrÅ¡i kupovinu
                     <i class="fas fa-arrow-alt-circle-down"></i>
                   </a>
                 </p>
               </div>
 
             </div>
-            <!-- KRAJ SA FOTOGRAFIJAMA PROIZVODA -->
+            KRAJ SA FOTOGRAFIJAMA PROIZVODA
           </div>
 
         </div>
 
-        <!-- KRAJ BOKSEVA -->
+        KRAJ BOKSEVA -->
 
       </div>
 
       <div class="page-header">
 
-        <!-- POČETAK BOKSEVA -->
+        <!-- POÄETAK BOKSEVA -->
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-0">
 
@@ -497,7 +382,7 @@
               </div>
               <div class="col-md-6">
                 <p>
-                  <strong><em>Satovi marke U-Boat se mogu naručiti jedino putem direktnog kontakta.</em></strong>
+                  <strong><em>Satovi marke U-Boat se mogu naruÄiti jedino putem direktnog kontakta.</em></strong>
                 </p>
 
               </div>
@@ -541,7 +426,7 @@
       </div>
 
     </form>
-    <!-- POČETAK FOOTER-A -->
+    <!-- POÄETAK FOOTER-A -->
     <footer>
       <div class="row">
 
@@ -568,7 +453,7 @@
     </footer>
     <!-- KRAJ FOOTER-A -->
   </div>
-  <!-- KRAJ OMOTAČA -->
+  <!-- KRAJ OMOTAÄA -->
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

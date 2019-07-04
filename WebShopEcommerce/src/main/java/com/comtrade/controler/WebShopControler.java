@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.comtrade.entity.Artikal;
 import com.comtrade.entity.Kategorije;
@@ -18,13 +15,12 @@ import com.comtrade.service.ArtikalService;
 import com.comtrade.service.KategorijaService;
 
 @Controller
-public class IndexControler {
-	
+public class WebShopControler {
 	private AdminService adminService;
 	private KategorijaService kategorijaService;
 	private ArtikalService artikalService;	
 	@Autowired
-	public IndexControler(AdminService adminService, KategorijaService kategorijaService,
+	public WebShopControler(AdminService adminService, KategorijaService kategorijaService,
 			ArtikalService artikalService) {
 		super();
 		this.adminService = adminService;
@@ -32,25 +28,24 @@ public class IndexControler {
 		this.artikalService = artikalService;
 	}
 
-	@GetMapping("/")
-	public String index() {
-		return "index";
+	@GetMapping("/webshop")
+	public String WebShopPrikaz(Model model) {
+		
+		  Kategorije kategorija = new Kategorije(); Artikal artikal= new Artikal();
+		  Artikal artikalDodaj= new Artikal(); model.addAttribute("kategorija",
+		  kategorija); model.addAttribute("artikal",artikal);
+		  model.addAttribute("artikalDodaj",artikalDodaj);
+		  model.addAttribute("listaKategorija",kategorijaService.getKategorijeList());
+		  model.addAttribute("listaArtikala",artikalService.listaArtikla());
+		 for(Artikal a:artikalService.listaArtikla()) {
+			 String  naziv=a.getKategorije().getNaziv();
+			 System.out.println(naziv);
+		 }
+		return "webshop";
+		
 	}
 	
-	@GetMapping("/index1")
-		public String index1(Model model) {
-		Kategorije kategorija = new Kategorije();
-		Artikal artikal= new Artikal();
-		Artikal artikalDodaj= new Artikal();
-		model.addAttribute("kategorija", kategorija);
-		model.addAttribute("artikal",artikal);
-		model.addAttribute("artikalDodaj",artikalDodaj);
-		model.addAttribute("listaKategorija",kategorijaService.getKategorijeList());
-		model.addAttribute("listaArtikala",artikalService.listaArtikla());
-			return"index1";
-		}	
-	
-	@GetMapping("/index/kategorijaArtikli/{id}")
+	@GetMapping("/webshop/kategorijaArtikli{id}")
 	public String prikazKategorijeArtikli(@PathVariable("id")int id,Model model) {
 			System.out.println(id);
 			List<Artikal> listaArtikalaZaK= artikalService.listaArtiklaZaKat(id);
@@ -58,27 +53,9 @@ public class IndexControler {
 			System.out.println(a.getNaziv());}
 			
 			model.addAttribute("idKat",id);
-			model.addAttribute("listaArtikalaZaK",listaArtikalaZaK);
-		return "index";
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			model.addAttribute("listaArtikala",listaArtikalaZaK);
+			 model.addAttribute("listaKategorija",kategorijaService.getKategorijeList());
+		return "webshop";
+		}
 	
 }
