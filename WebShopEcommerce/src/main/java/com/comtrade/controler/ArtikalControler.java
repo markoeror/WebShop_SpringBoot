@@ -52,8 +52,17 @@ public class ArtikalControler {
 		System.out.println("pokusaj kreiranja artikla "+artikal.getNaziv()+" u kategoriji "+nameKat);		
 		String fileName=GetFile(part);
 		int a=fileName.lastIndexOf("\\");
-		fileName=fileName.substring(a+1);		
-		String uploadFile="C:\\Users\\Java Advanced\\Pictures\\ecomerce\\WebShopEcommerce\\src\\main\\resources\\static\\images\\"+nameKat+"\\";
+		fileName=fileName.substring(a+1);	
+	
+	
+		
+		String filePath1 = new File("").getAbsolutePath();
+		String path=System.getProperty("user.dir"); //returns the working directory
+		System.out.println(path);
+	
+		
+		String uploadFile=path+"\\src\\main\\resources\\static\\images\\"+nameKat+"\\";
+	//	String uploadFile="C:\\Users\\Marko Eror\\eclipse-workspace\\webshop_satovi\\WebShopEcommerce\\src\\main\\resources\\static\\images\\"+nameKat+"\\";
 		File f= new File(uploadFile);
 		if(!f.exists()) {
 			f.mkdir();

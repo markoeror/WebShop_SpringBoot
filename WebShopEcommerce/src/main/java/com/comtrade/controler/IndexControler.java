@@ -52,7 +52,7 @@ public class IndexControler {
 	public String prikazKategorijeArtikli(@PathVariable("id")int id) {
 			System.out.println(id);
 			List<Artikal> listaArtikala= artikalService.listaArtiklaZaKat(id);
-			
+			System.out.println(listaArtikala);
 		
 		return "redirect:/index1";
 		
