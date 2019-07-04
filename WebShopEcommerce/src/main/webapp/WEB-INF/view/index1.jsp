@@ -74,11 +74,25 @@
                <%
               if(listaKategorija!=null){
               for(Kategorije k: listaKategorija){ %>
-              <li><a href="${pageContext.request.contextPath}/webshop/kategorijaArtikli<%=k.getId()%>"><%=k.getNaziv() %></a></li>
+              <li><a href="${pageContext.request.contextPath}/index/kategorijaArtikli/<%=k.getId()%>"><%=k.getNaziv() %></a></li>
               <%}} %>
               
         
               </ul>
+              
+              
+              
+             <%--   <ul class="dropdown-menu">
+               <form:form method="post" action="/kategorija/prikazi" modelAttribute="kategorija">
+               <%
+              if(listaKategorija!=null){
+              for(Kategorije k: listaKategorija){ %>
+              <form:hidden path="${k.id}"/>
+              <li><form:button path="${k.naziv}" >%=k.getNaziv() %</form:button></li>
+              <%}} %>
+              
+       			 </form:form>
+              </ul> --%>
             </li>
             <!-- KRAJ PADAJUĆEG MENIJA -->
 

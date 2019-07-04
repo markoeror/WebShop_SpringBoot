@@ -59,7 +59,7 @@ public class IndexControler {
 			
 			model.addAttribute("idKat",id);
 			model.addAttribute("listaArtikalaZaK",listaArtikalaZaK);
-		return "index";
+		return "index1";
 		
 	}
 	

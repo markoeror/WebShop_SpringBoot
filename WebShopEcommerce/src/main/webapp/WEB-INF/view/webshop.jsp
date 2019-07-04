@@ -108,10 +108,10 @@
           <div class="col-xs-3 col-sm-3 col-md-0">
 
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-12">
+        <!--   <div class="col-xs-6 col-sm-6 col-md-12">
             <img id="HaGe" src="images/primetime/HAEMER-icon-large1.jpg" class="img-responsive" alt="Haemmer Germany">
 
-          </div>
+          </div> -->
         </div>
 
         <div class="row">
@@ -375,18 +375,7 @@
           </div>
           <div class="col-xs-6 col-sm-6 col-md-12">
 
-            <div class="row">
-              <div class="col-md-6">
-                <img id="HaGe" src="images/primetime/UBoat-icon-large1.jpg" class="img-responsive"
-                  alt="Haemmer Germany">
-              </div>
-              <div class="col-md-6">
-                <p>
-                  <strong><em>Satovi marke U-Boat se mogu naruÄiti jedino putem direktnog kontakta.</em></strong>
-                </p>
-
-              </div>
-            </div>
+      
 
           </div>
         </div>

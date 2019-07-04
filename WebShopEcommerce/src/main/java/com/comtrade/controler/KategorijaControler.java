@@ -41,11 +41,11 @@ public class KategorijaControler {
 		return "redirect:/admin";		
 		}
 	
-	@PostMapping("/kategorija/{temp.id}")
-		public String listaArtikalaKategorije(@ModelAttribute("kategorija1")int id) {
-			Kategorije k= new Kategorije();
-			k.setId(id);
-			return null;			
+	@PostMapping("/kategorija/prikazi")
+		public String listaArtikalaKategorije(@ModelAttribute("kategorija1")Kategorije k) {
+		
+			k.setId(k.getId());
+			return "productKategorija";			
 		}
 	
 	

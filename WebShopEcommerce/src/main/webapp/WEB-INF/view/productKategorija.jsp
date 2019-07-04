@@ -6,7 +6,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +25,6 @@
   <link href="${pageContext.request.contextPath}css/all.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}css/mojstil.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}ss/mojstil_index.css" rel="stylesheet">
-
   <link href="${pageContext.request.contextPath}css/mojstil_galerija.css" rel="stylesheet">
 
 
