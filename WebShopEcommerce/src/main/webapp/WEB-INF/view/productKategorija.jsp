@@ -21,11 +21,11 @@
   <meta name="robots" content="index">
   <link rel="icon" href="http://primetimewatches.net/media/favicon/default/favicon.ico" type="image/x-icon">
 
-  <link href="${pageContext.request.contextPath}css/bootstrap.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}css/all.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}css/mojstil.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}ss/mojstil_index.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}css/mojstil_galerija.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/css/all.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/css/mojstil.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/ss/mojstil_index.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/css/mojstil_galerija.css" rel="stylesheet">
 
 
 </head>
@@ -138,7 +138,7 @@
                     </h3>
                   </p>
                   <a>
-                    <img src="\images\<%=naziv%>\<%=a.getFileName() %>" alt="<%=a.getNaziv()%>" width=”30px” height=”30px”>
+                    <img src="${pageContext.request.contextPath}\images\<%=naziv%>\<%=a.getFileName() %>" alt="<%=a.getNaziv()%>" width=”30px” height=”30px”>
                   </a>
                 </div>
                  <input type="hidden" name="idArtikla" value="<%=a.getId()%>">
@@ -456,10 +456,10 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/mojjs.js"></script>
+  <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/mojjs.js"></script>
 
-  <script src="js/korpa.js"></script>
+  <script src="${pageContext.request.contextPath}/js/korpa.js"></script>
 
 
 </body>

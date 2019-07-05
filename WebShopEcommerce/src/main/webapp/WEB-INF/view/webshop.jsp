@@ -12,7 +12,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Prime - Webshop</title>
+  <title>Web Shop</title>
   <meta name="description" content=".....">
   <meta name="keywords" content=".....">
   <meta name="author" content="Aleksandar Vilus | aleksandar.vilus.it.obuka@gmail.com">
@@ -25,13 +25,17 @@
   <link href="${pageContext.request.contextPath}css/all.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}css/mojstil.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}ss/mojstil_index.css" rel="stylesheet">
-
   <link href="${pageContext.request.contextPath}css/mojstil_galerija.css" rel="stylesheet">
 
 
 </head>
 
 <body>
+<form:form action="/webshop/naruci" method="post" modelAttribute="narucenArtikal">
+ <input type="hidden" id="idartikla1"name ="idartikla">
+	<input type="hidden" id= "kolicina1" name ="kolicina">
+	<input type="hidden" id= "cena1" name ="cenaA">
+	
 <%List<Kategorije> listaKategorija=(List<Kategorije>) request.getAttribute("listaKategorija"); %>
 <%List<Artikal> listaArtikala=(List<Artikal>) request.getAttribute("listaArtikala"); %>
   <!-- POÄETAK OMOTAÄA -->
@@ -171,198 +175,7 @@
       </div>
       <div class="page-header">
 
-    <!--     POÄETAK BOKSEVA
-        <div class="row">
-          <div class="col-xs-3 col-sm-3 col-md-0">
-
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-12">
-            <img id="HaGe" src="images/primetime/WELDER-icon-large1.jpg" class="img-responsive" alt="Welder">
-
-          </div>
-        </div>
-
-        <div class="row">
-
-          BOÄNI SEGMENT KOJI SLUÅ½I SAMO ZA ODVAJANJE
-          <div class="col-xs-2 col-md-1">
-          </div>
-
-          GLAVNI SEGMENT
-          <div class="col-xs-8 col-md-10">
-
-            POÄETAK DELA SA FOTOGRAFIJAMA PROIZVODA
-            <div class="okvir0">
-
-              FOTOGRAFIJA 7
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K24 3300</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K24_3300.jpg" alt="DHC-12 Zeno">
-                  </a>
-                </div>
-                <p>
-                  <strong>71,500.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="sedam"></label>
-                  <input type="text" id="sedam" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              FOTOGRAFIJA 8
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K24 3301</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K24_3301.jpg" alt="DHC-13 Moon">
-                  </a>
-                </div>
-                <p>
-                  <strong>71,500.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="osam"></label>
-                  <input type="text" id="osam" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              FOTOGRAFIJA 9
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K25B 4603</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K25B_4603.jpg" alt="HC-07 Invader">
-                  </a>
-                </div>
-                <p>
-                  <strong>64,900.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="devet"></label>
-                  <input type="text" id="devet" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              FOTOGRAFIJA 10
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K25B 4704</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K25B_4704.jpg" alt="HC-16 Charon">
-                  </a>
-                </div>
-                <p>
-                  <strong>70,400.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="deset"></label>
-                  <input type="text" id="deset" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              FOTOGRAFIJA 11
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K33 9301</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K33_9301.jpg" alt="HQ-02 Dublin">
-                  </a>
-                </div>
-                <p>
-                  <strong>70,400.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="jedanaest"></label>
-                  <input type="text" id="jedanaest" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-              FOTOGRAFIJA 12
-              <div class="okvir1">
-                <div>
-                  <p>
-                    <h3>
-                      <strong>K33 9302</strong>
-                    </h3>
-                  </p>
-                  <a>
-                    <img src="images/welder/K33_9302.jpg" alt="HQ-10 Brussel">
-                  </a>
-                </div>
-                <p>
-                  <strong>70,400.00 RSD</strong>
-                </p>
-                <p>
-                  NaruÄujem <label for="dvanaest"></label>
-                  <input type="text" id="dvanaest" name="" size="1" placeholder="0"> komada
-                </p>
-                <p>
-                  <a class="btn btn-primary btn-sm" href="#krajodabira" role="button">
-                    ZavrÅ¡i kupovinu
-                    <i class="fas fa-arrow-alt-circle-down"></i>
-                  </a>
-                </p>
-              </div>
-
-            </div>
-            KRAJ SA FOTOGRAFIJAMA PROIZVODA
-          </div>
-
-        </div>
-
-        KRAJ BOKSEVA -->
+    
 
       </div>
 
@@ -444,13 +257,26 @@
   </div>
   <!-- KRAJ OMOTAÄA -->
 
-
+</form:form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/mojjs.js"></script>
+  <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/mojjs.js"></script>
 
-  <script src="js/korpa.js"></script>
-
+  <script src="${pageContext.request.contextPath}/js/korpa.js"></script>
+JAVA SCRIPT FUNKCIJA POMOCU KOJE DODELJUJEMO VREDNOSTI UNETE KOLICINE I ID-A ZA ODABRANI PROIZVOD I DODELJUJEMO IH SKRIVENIM POLJIMA
+  <script>
+	function poziv(vrednost,cena) {
+		var id = vrednost;
+		var kolicina = document.getElementById(vrednost).value;
+		/* var cena=cena; */
+		document.getElementById("idartikla1").value=id;
+		document.getElementById("kolicina1").value=kolicina;
+		document.getElementById("cena1").value=cena;
+	 	alert(kolicina);
+		alert(id); 
+		alert(cena); 
+		}
+  </script>
 
 </body>
 
