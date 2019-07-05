@@ -244,11 +244,13 @@
   <script src="js/mojjs.js"></script>
   <script type="text/javascript">
   
-function findIdCombo() {
-		var id = document.getElementById("categoryComboBox");
-		var idCategory = id.options[id.selectedIndex].value;
-		document.getElementById("id").value = idCategory;
-		console.log(idCategory);}	
+  function findIdCombo() {
+  		var id = document.getElementById("categoryComboBox");
+  		var idCategory = id.options[id.selectedIndex].value;
+  		document.getElementById("id").value = idCategory;
+  		console.log(idCategory);
+  		}	
+  		
 function findIdCombo() {
 	var id = document.getElementById("categoryComobox");
 	var idCategory = id.options[id.selectedIndex].value;
@@ -263,7 +265,7 @@ function findIdComboP() {
 	document.getElementById("idProd").value = idProduct;
 	console.log(idProduct);
 	/*  alert(idProduct);  */
-	
+
 }
 </script>
 </body>

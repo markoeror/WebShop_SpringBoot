@@ -37,6 +37,13 @@ public class Porudzbine {
 	public Long getId() {
 		return id;
 	}
+	public Porudzbine(Long id) {
+		super();
+		this.id = id;
+	}
+	public Porudzbine() {
+		// TODO Auto-generated constructor stub
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}

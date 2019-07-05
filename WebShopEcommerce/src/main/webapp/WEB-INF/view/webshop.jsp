@@ -210,8 +210,15 @@
                   <label for="btn-izracunaj">
 
                   </label>
-                  <input type="submit" value="Ukupan iznos" id="btn-izracunaj" name="">
-                  <input type="text" id="txt-izracunaj" placeholder="0.00 RSD" name="">
+                  <%   HttpSession sesija = request.getSession();
+                		  double korpa=0;
+                		  if(sesija.getAttribute("korpa")!=null){
+                			 
+ 						 korpa=(double)sesija.getAttribute("korpa");
+ 						 System.out.println(korpa);  }%>
+ 					 
+                   <input type="text" id="txt-izracunaj" value="<%=korpa %>" name="" disabled="disabled">
+                    <a class="btn btn-primary btn-lg" href="/webshop/kupovina" role="button">Poruci</a>
                 </p>
                 <div id="rezultati">
                 </div>
@@ -272,9 +279,9 @@ JAVA SCRIPT FUNKCIJA POMOCU KOJE DODELJUJEMO VREDNOSTI UNETE KOLICINE I ID-A ZA 
 		document.getElementById("idartikla1").value=id;
 		document.getElementById("kolicina1").value=kolicina;
 		document.getElementById("cena1").value=cena;
-	 	alert(kolicina);
+	 /* 	alert(kolicina);
 		alert(id); 
-		alert(cena); 
+		alert(cena);  */
 		}
   </script>
 
